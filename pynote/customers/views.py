@@ -1,9 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Customer
 from .serializers import *
 
 
@@ -26,13 +24,13 @@ def customers_list(request):
         except EmptyPage:
             data = paginator.page(paginator.num_pages)
 
-        serializer = CustomerSerializer(data,context={'request': request} ,many=True)
+        serializer = CustomerSerializer(data, context={'request': request}, many=True)
         if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():
             previousPage = data.previous_page_number()
 
-        return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/api/customers/?page=' + str(nextPage), 'prevlink': '/api/customers/?page=' + str(previousPage)})
+        return Response({'data': serializer.data, 'count': paginator.count, 'numpages': paginator.num_pages, 'nextlink':'/api/customers/?page=' + str(nextPage), 'prevlink': '/api/customers/?page=' + str(previousPage)})
 
     elif request.method == 'POST':
         serializer = CustomerSerializer(data=request.data)
