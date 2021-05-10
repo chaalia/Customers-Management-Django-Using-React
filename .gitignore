@@ -1,10 +1,10 @@
 myenv
+venv
 .idea
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 pynote/__pycache__/
-pynote/db.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -56,3 +56,6 @@ docs/_build/
 *pyc
 
 !**/__pycache__/
+
+pynote/db.sqlite3
+.idea
