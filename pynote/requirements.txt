@@ -1,0 +1,4 @@
+django==2.2.4
+djangorestframework==3.11.2
+django-cors-headers
+django-rest-swagger
